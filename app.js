@@ -39,33 +39,24 @@ app.post("/", (req, res) => {
     data: jsonData,
     auth: {
       username: "tolu",
-      password: "d2848a139554dcc1a64fc471a1eda879-us17"
+      password: "90179c090d9e91f9e865896bcc2d0774-us17"
     }
   })
     .then(function(results) {
       console.log(results);
-      // res.send(results);
+      res.sendFile(__dirname + "/success.html");
     })
     .catch(function(err) {
-      res.send(err);
+      console.log(err);
+      res.sendFile(__dirname + "/failed.html");
     });
-
-  // const options = {
-  //   method: "POST",
-  //   auth: "tolu:d2848a139554dcc1a64fc471a1eda879-us17"
-  // };
-
-  // const request = https.request(url, options, function(response) {
-  //   response.on("data", function(data) {
-  //     console.log(JSON.parse(data));
-  //   });
-  // });
-  //
-  // request.write(jsonData);
-  // request.end;
 });
 
-app.listen(3000, () => {
+app.post("/failure", (req, res) => {
+  res.redirect("/");
+});
+
+app.listen(process.env.PORT || 3000, () => {
   console.log("server running on port 3000");
 });
 
