@@ -29,8 +29,8 @@ app.post("/", (req, res) => {
   const jsonData = JSON.stringify(data);
   console.log(jsonData);
 
-  const url = "https://us17.api.mailchimp.com/3.0/lists/63277e5c06/members";
-  const apiKey = "d2848a139554dcc1a64fc471a1eda879-us17";
+  const url = "https://us17.api.mailchimp.com/3.0/lists/*/members";
+  const apiKey = "*";
 
   axios({
     method: "POST",
@@ -39,7 +39,7 @@ app.post("/", (req, res) => {
     data: jsonData,
     auth: {
       username: "tolu",
-      password: "90179c090d9e91f9e865896bcc2d0774-us17"
+      password: "*"
     }
   })
     .then(function(results) {
@@ -60,5 +60,3 @@ app.listen(process.env.port || 3000, () => {
   console.log("server running on port 3000");
 });
 
-// API KEY  d2848a139554dcc1a64fc471a1eda879-us17
-// List ID 63277e5c06
